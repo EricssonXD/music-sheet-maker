@@ -63,13 +63,13 @@ music-sheet-maker/
 
 ## Implementation Progress
 
-- [ ] **Step 1:** Project setup — git init, .gitignore, PLAN.md
-- [ ] **Step 2:** Backend project structure + pyproject.toml with dependencies
-- [ ] **Step 3:** FastAPI main.py — endpoints, model loading, SSE job queue
-- [ ] **Step 4:** pipeline/separate.py — Demucs stem separation
-- [ ] **Step 5:** pipeline/transcribe.py — basic-pitch melody transcription
-- [ ] **Step 6:** pipeline/chords.py — chord-extractor chord detection
-- [ ] **Step 7:** pipeline/build_score.py — music21 score assembly
+- [x] **Step 1:** Project setup — git init, .gitignore, PLAN.md
+- [x] **Step 2:** Backend project structure + pyproject.toml with dependencies
+- [x] **Step 3:** FastAPI main.py — endpoints, model loading, SSE job queue
+- [x] **Step 4:** pipeline/separate.py — Demucs stem separation
+- [x] **Step 5:** pipeline/transcribe.py — basic-pitch melody transcription
+- [x] **Step 6:** pipeline/chords.py — chord-extractor chord detection
+- [x] **Step 7:** pipeline/build_score.py — music21 score assembly
 - [ ] **Step 8:** Scaffold SvelteKit frontend with dependencies
 - [ ] **Step 9:** UploadZone component — drag-and-drop + file browse
 - [ ] **Step 10:** ProgressBar component — SSE progress display
