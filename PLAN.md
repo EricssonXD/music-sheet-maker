@@ -70,13 +70,13 @@ music-sheet-maker/
 - [x] **Step 5:** pipeline/transcribe.py — basic-pitch melody transcription
 - [x] **Step 6:** pipeline/chords.py — chord-extractor chord detection
 - [x] **Step 7:** pipeline/build_score.py — music21 score assembly
-- [ ] **Step 8:** Scaffold SvelteKit frontend with dependencies
-- [ ] **Step 9:** UploadZone component — drag-and-drop + file browse
-- [ ] **Step 10:** ProgressBar component — SSE progress display
-- [ ] **Step 11:** SheetRenderer component — OSMD MusicXML rendering
-- [ ] **Step 12:** AudioPlayer component — Tone.js MIDI playback
-- [ ] **Step 13:** Export — PDF (print) + PNG (canvas)
-- [ ] **Step 14:** Wire up main +page.svelte + api.ts
+- [x] **Step 8:** Scaffold SvelteKit frontend with dependencies
+- [x] **Step 9:** UploadZone component — drag-and-drop + file browse
+- [x] **Step 10:** ProgressBar component — SSE progress display
+- [x] **Step 11:** SheetRenderer component — OSMD MusicXML rendering
+- [x] **Step 12:** AudioPlayer component — Tone.js MIDI playback
+- [x] **Step 13:** Export — PDF (print) + PNG (canvas)
+- [x] **Step 14:** Wire up main +page.svelte + api.ts
 - [ ] **Step 15:** Test with "Payphone" by Maroon 5
 
 ## Test Reference
