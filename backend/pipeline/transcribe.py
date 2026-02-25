@@ -26,12 +26,11 @@ def load_model() -> None:
     """Pre-load the basic-pitch model. Call once at server startup."""
     global _model
     logger.info("Loading basic-pitch model...")
-    from basic_pitch import ICASSP_2022_MODEL_PATH
-    from basic_pitch.inference import predict
+    from basic_pitch import FilenameSuffix, build_icassp_2022_model_path
 
-    # Warm up the model by storing the model path (model loads lazily on first predict)
-    _model = ICASSP_2022_MODEL_PATH
-    logger.info("basic-pitch model path loaded.")
+    # Use ONNX model — tflite_runtime is incompatible with NumPy 2.x
+    _model = build_icassp_2022_model_path(FilenameSuffix.onnx)
+    logger.info(f"basic-pitch ONNX model loaded: {_model}")
 
 
 def transcribe_melody(

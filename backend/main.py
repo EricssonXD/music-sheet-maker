@@ -24,7 +24,7 @@ from fastapi import FastAPI, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from sse_starlette.sse import EventSourceResponse
 
-from pipeline import separate, transcribe, chords, build_score
+from backend.pipeline import separate, transcribe, chords, build_score
 
 # ---------------------------------------------------------------------------
 # Logging
