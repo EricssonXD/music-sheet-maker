@@ -77,7 +77,18 @@ music-sheet-maker/
 - [x] **Step 12:** AudioPlayer component — Tone.js MIDI playback
 - [x] **Step 13:** Export — PDF (print) + PNG (canvas)
 - [x] **Step 14:** Wire up main +page.svelte + api.ts
-- [ ] **Step 15:** Test with "Payphone" by Maroon 5
+- [x] **Step 15:** Dependency fixes & smoke test (torchcodec, ONNX, import paths)
+- [ ] **Step 16:** Test with "Payphone" by Maroon 5
+
+## Bugs Fixed
+
+| Date | Issue | Fix |
+|------|-------|-----|
+| 2026-02-26 | `demucs.api` module doesn't exist | Rewrote separate.py using `demucs.pretrained` + `demucs.apply` |
+| 2026-02-26 | `pkg_resources` missing (setuptools 82) | Pinned `setuptools<81` |
+| 2026-02-26 | `torchaudio.save` requires torchcodec | Installed `torchcodec` package |
+| 2026-02-26 | `tflite_runtime` incompatible with NumPy 2.x | Switched basic-pitch to ONNX backend |
+| 2026-02-26 | `from pipeline import ...` ModuleNotFoundError | Changed to `from backend.pipeline import ...` |
 
 ## Test Reference
 
