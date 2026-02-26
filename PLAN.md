@@ -93,9 +93,11 @@ music-sheet-maker/
 ## Test Reference
 
 **Primary test song:** "Payphone" by Maroon 5
-- Key: Bb major
-- BPM: ~110
-- Expected chords: Bb → Fm → Ab → Eb (repeating)
+- Source: https://www.hooktheory.com/theorytab/view/maroon-5/payphone
+- Key: **B major** (5 sharps)
+- BPM: **~94**
+- Expected chords: **E → B → G#m → F#** (IV–I–vi–V, repeating throughout all sections)
+- Chordino accuracy: B, E, F# detected reliably; G#m (vi) is frequently misidentified as Ebm/Bbm/C#m — known Chordino limitation
 - Rap section (~2:30–3:10): expect sparse/noisy melody notes (acceptable)
 
 ## System Requirements

@@ -18,5 +18,24 @@ dependencies = [
     "pretty-midi>=0.2.10",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.0",
+    "pytest-asyncio>=1.0.0",
+]
+
 [project.scripts]
 dev = "uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000"
+
+# ---------------------------------------------------------------------------
+# Pytest configuration
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+# Run from repo root: pytest backend/tests/
+testpaths = ["backend/tests"]
+# -m "not slow" skips integration tests that require the audio file + ML models
+markers = [
+    "slow: marks tests as slow (require audio file and ML model loading)",
+]
+# Exclude slow integration tests by default
+addopts = "-m 'not slow' -v"

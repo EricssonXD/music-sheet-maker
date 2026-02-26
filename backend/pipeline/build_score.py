@@ -27,6 +27,49 @@ from .chords import ChordEvent
 logger = logging.getLogger(__name__)
 
 
+# ---------------------------------------------------------------------------
+# Key detection from chord events
+# ---------------------------------------------------------------------------
+
+def detect_key_from_chords(chord_events: list[ChordEvent]) -> str | None:
+    """
+    Detect the musical key by analysing the set of chords using music21.
+
+    Builds a short music21 stream of ChordSymbol objects and runs the
+    Krumhansl-Schmuckler key-finding algorithm on the pitch content.
+    This is more reliable than running it on sparse vocal melody alone.
+
+    Args:
+        chord_events: List of ChordEvent objects (normalized chord names).
+
+    Returns:
+        Key string (e.g. "B major", "G# minor") or None if detection fails
+        or there is insufficient data.
+    """
+    if not chord_events:
+        return None
+
+    from music21 import harmony, stream as m21stream
+
+    s = m21stream.Stream()
+    for ce in chord_events:
+        try:
+            cs = harmony.ChordSymbol(ce.chord)
+            s.append(cs)
+        except Exception:
+            continue
+
+    if len(s) < 3:
+        return None
+
+    try:
+        detected = s.analyze("key")
+        return str(detected)
+    except Exception as e:
+        logger.warning(f"Chord-based key analysis failed: {e}")
+        return None
+
+
 def estimate_bpm(note_events: list[NoteEvent], default_bpm: float = 120.0) -> float:
     """
     Estimate BPM from inter-onset intervals of note events.
@@ -176,14 +219,20 @@ def build_score(
     logger.info("Creating measures...")
     score.makeMeasures(inPlace=True)
 
-    # Analyze key signature
+    # Analyze key signature — prefer chord-based analysis (more reliable)
+    key_str = "Unknown"
     try:
-        detected_key = score.analyze("key")
-        key_str = str(detected_key)
-        logger.info(f"Detected key: {key_str}")
+        chord_key = detect_key_from_chords(chord_events)
+        if chord_key:
+            key_str = chord_key
+            logger.info(f"Key from chords: {key_str}")
+        else:
+            # Fallback: analyze melody stream
+            detected_key = score.analyze("key")
+            key_str = str(detected_key)
+            logger.info(f"Key from melody: {key_str}")
     except Exception as e:
         logger.warning(f"Key analysis failed: {e}")
-        key_str = "Unknown"
 
     # Serialize to MusicXML
     logger.info("Writing MusicXML...")
