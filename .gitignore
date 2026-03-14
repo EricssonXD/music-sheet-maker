@@ -31,6 +31,9 @@ tmp/
 *.wav
 *.mp3
 
+# Keep the Maron 5 Payphone song
+!Maron_5_Payphone.mp3
+
 # Environment
 .env
 .env.local
